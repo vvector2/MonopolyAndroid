@@ -1,36 +1,21 @@
-import React, { Component } from 'react';
-import Canvas, {Image as CanvasImage} from 'react-native-canvas';
-import {Button, View} from 'react-native'
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
+import Game from './source/Game';
+import Options from './source/Options';
+import Menu from './source/Menu';
 
-export default class App extends Component {
+const MainNavigator = createStackNavigator({
+  Menu: {screen: Menu},
+  Options: {screen: Options},
+  Game: {screen: Game}
+},
+{
+  headerMode: 'none',
+  navigationOptions: {
+    headerVisible: false,
+  }
+});
 
-  constructor(props){
-    super(props);
-    this.widthCanvas= 400;
-    this.heightCanvas= 400;
-  }
- 
-  handleCanvas = (canvas) => {
-    this.init(canvas);
-  }
- 
-  init(canvas) {
-    canvas.width = this.widthCanvas;
-    canvas.height = this.heightCanvas;
-    this.backgroundImg = new CanvasImage(canvas);
-    this.backgroundImg.src= "https://image.shutterstock.com/image-photo/glitter-vintage-lights-background-gold-260nw-226746934.jpg";
-    this.canvasContext = canvas.getContext("2d");
-    this.backgroundImg.addEventListener('load', () => {
-      this.canvasContext.drawImage(this.backgroundImg, 0, 0, this.widthCanvas,this.heightCanvas);
-    });
-  }
+const App = createAppContainer(MainNavigator);
 
-  render() {
-    return (
-      <View >
-        <Canvas ref={this.handleCanvas}/>
-        <Button title="just a button"/>
-      </View>
-    );
-  }
-}
+export default App;
