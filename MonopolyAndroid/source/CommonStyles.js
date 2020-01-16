@@ -3,7 +3,7 @@ import {GetWindowWidth, GetWindowHeight} from './Helper';
 
 const windowWidth = GetWindowWidth();
 const windowHeight = GetWindowHeight();
-export const canvasWidth = windowWidth *4/5;
+export const canvasWidth = windowWidth ;
 export const canvasHeight = windowHeight;
 
 export const commonStyles = StyleSheet.create({
@@ -11,6 +11,15 @@ export const commonStyles = StyleSheet.create({
     flex:1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  GameButtonsContainer : {
+    position: 'absolute',
+    bottom:windowHeight*0.5,
+    left:windowWidth*0.4,
+    width: windowWidth*0.2
+  },
+  GameButton : {
+    width: "90%", margin: 10
   },
   primaryButton: {
     width: windowWidth/4
