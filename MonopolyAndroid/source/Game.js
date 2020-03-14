@@ -6,7 +6,10 @@ import {canvasWidth, canvasHeight, commonStyles} from "./CommonStyles";
 export default  class Game extends Component {
     constructor(props){
       super(props);
-      console.log(canvasWidth);
+      
+      //players from option container
+      const players =this.props.navigation.state.params.players; 
+
       this.widthCanvas= canvasWidth;
       this.heightCanvas= canvasHeight;
     }

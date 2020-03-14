@@ -31,7 +31,21 @@ export const commonStyles = StyleSheet.create({
     height: windowHeight/4
   },
   optionsContainer: {
-    width: windowWidth ,
-    height: windowHeight*3/4
-  } 
+    flex: 3,
+    alignItems:'center',
+    justifyContent: 'center',
+    width : windowWidth * 0.75
+  },
+  playerOptionContainer : {
+    flex: 1,
+    marginTop:20,
+    marginBottom: 20,
+    alignItems:'center',
+    flexDirection: 'row',
+    alignSelf:"stretch"
+  },
+  checkBoxStyle : {
+    backgroundColor: "transparent",
+    borderColor: "transparent"
+  }
 });
