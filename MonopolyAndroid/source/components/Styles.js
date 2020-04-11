@@ -1,10 +1,7 @@
 import {StyleSheet}  from 'react-native';
-import {GetWindowWidth, GetWindowHeight} from './Helper';
-
+import {GetWindowWidth,GetWindowHeight,canvasWidth, canvasHeight} from '../common/Helper';
 const windowWidth = GetWindowWidth();
 const windowHeight = GetWindowHeight();
-export const canvasWidth = windowWidth ;
-export const canvasHeight = windowHeight;
 
 export const commonStyles = StyleSheet.create({
   mainContainer : {
@@ -29,7 +26,10 @@ export const commonStyles = StyleSheet.create({
     justifyContent: 'space-around',
     width: windowWidth ,
     height: windowHeight/4
-  },
+  }
+});
+
+export const optionStyle = StyleSheet.create({
   optionsContainer: {
     flex: 3,
     alignItems:'center',
@@ -47,5 +47,44 @@ export const commonStyles = StyleSheet.create({
   checkBoxStyle : {
     backgroundColor: "transparent",
     borderColor: "transparent"
+  }
+});
+
+export const gameStyles = StyleSheet.create({
+  gameScreen : {
+    flexDirection: "row",
+    display: "flex",
+    flex :1 ,
+    justifyContent: "flex-start",
+  },
+  canvasContainer : {
+    marginTop: 10,
+    marginLeft: 10,
+    marginBottom: 10,
+    width: canvasWidth, 
+    height: canvasHeight
+  },
+  decisionContainer : {
+    flexDirection: "column",
+    margin: 10
+  },
+  cityImage : {
+    width : windowWidth /4,
+    height : "60%"
+  },
+  buttonStyle : {
+    height : 20, 
+    marginTop : 5,
+    width : windowWidth /4 -10,
+    backgroundColor: "silver",
+  },
+  titleButtonStyle: {
+    fontSize : 10
+  },
+  gameActionContainer : {
+    alignItems : "center"
+  },
+  playerPanelContainer : {
+    justifyContent : "space-evenly"
   }
 });
