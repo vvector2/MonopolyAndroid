@@ -62,7 +62,12 @@ export const gameStyles = StyleSheet.create({
     marginLeft: 10,
     marginBottom: 10,
     width: canvasWidth, 
-    height: canvasHeight
+    height: canvasHeight,
+    borderTopWidth: 3,
+    borderLeftWidth: 3,
+    borderRightWidth: 3,
+    borderBottomWidth: 3,
+    borderColor: 'silver',
   },
   decisionContainer : {
     flexDirection: "column",
@@ -86,5 +91,11 @@ export const gameStyles = StyleSheet.create({
   },
   playerPanelContainer : {
     justifyContent : "space-evenly"
+  },
+  canvas : {
+    position: 'absolute',
+    zIndex: 1,
+    width: canvasWidth, 
+    height: canvasHeight,
   }
 });

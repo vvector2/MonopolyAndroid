@@ -7,7 +7,7 @@ export class LandElement extends Element {
         this.rgbColorStr = rgbColorStr;
     }
     draw(context) {
-        let opacityColor = this.rgbColorStr.substring(0, this.rgbColorStr.length - 2) + "0.2)";
+        let opacityColor = this.rgbColorStr.substring(0, this.rgbColorStr.length - 2) + "0.5)";
         console.log(opacityColor);
         console.log(this);
         context.fillStyle = opacityColor;
