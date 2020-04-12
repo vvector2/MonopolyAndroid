@@ -1,12 +1,16 @@
 import {LandElement} from "./LandElement";
+import ImageElement from "./ImageElement";
+import {HOUSE_SIZE} from "./MonopolyBoard";
+import {dynamicImages} from "../../resource/dynamicImages";
 
 export class Player {
-    constructor(pawn,board,rgbColorString) {
+    constructor(pawn,board,rgbColorString, id ) {
         this.pawn= pawn;
-        this.gold = 500;
+        this.gold = 1500;
         this.board = board;
         this.idField = 0;
         this.listOfLand = [];
+        this.id = id;
         this.rgbColorString = rgbColorString // rgb string color
     }
     moveNext(renderer,n, endCallack) {
@@ -27,9 +31,22 @@ export class Player {
         setTimeout(() => this.moveNext(renderer, n-1 ,endCallack), 500)
     }
 
-    addNewLand(field, renderer) {
+    addNewLand(field, renderer ) {
         this.listOfLand.push(field);
+        field.own = this;
+        field.punishment = field.costLand;
+        this.gold = this.gold -field.costLand;
         renderer.addRenderObject(new LandElement(field, this.rgbColorString), 1);
+        renderer.render()
+    }
+    buyHouse(field, renderer){
+        field.punishment += field.costLand;
+        this.gold-= 200;
+
+        const cord = this.board.getHouseCoord(field.id);
+        const imageElm = new ImageElement(cord.x, cord.y , HOUSE_SIZE.w, HOUSE_SIZE.h);
+        imageElm.setImage(renderer,2,dynamicImages.house[id]);
+        renderer.addRenderObject(imageElm)
         renderer.render()
     }
 }

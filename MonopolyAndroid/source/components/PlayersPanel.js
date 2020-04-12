@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
 import {View,Image,Text} from 'react-native';
 import { gameStyles } from './Styles';
+import {getColorByPlayerId} from "../common/Helper";
 
 export class PlayersPanel extends Component {
     constructor(props) {
         super(props); 
-        this.state = 
-            {players : [{name:"player1",gold:15, color:"blue" },
-            {name:"player2",gold:15,color:"red" },
-            {name:"player2",gold:16,color:"green" },
-            {name:"player3",gold:17,color:"orange" }] 
-        };
+        const playersFromOption =  this.props.playersFromOption;
+        const players = [];
+        for(let i =0; i < playersFromOption.length ; i ++) {
+          players.push({name:"player "+ String(i+1), gold:1500, color: getColorByPlayerId(i)});
+        }
+        this.state = {players: players};
+        console.log(this.state);
     }
     updateGameState(gameState) {
-  }
+      console.log("update game state in player panel");
+      console.log(gameState);
+      const players = this.state.players;
+      console.log(players);
+      for(let i =0; i < gameState.playerGold.length ; i ++) 
+        players[i].gold = gameState.playerGold[i];
+      this.setState({players: players})
+    }
     playerInfo(player, idx) {
-        return (<View key={idx} style={{backgroundColor: player.color, width: "100%"}} >
+        return (<View key={idx} style={[gameStyles.playerPanel , { backgroundColor: player.color}]} >
           <Text >{player.name}</Text>
           <View style={{flexDirection:"row", justifyContent : "space-between", alignItems: "center"}}>
             <Image

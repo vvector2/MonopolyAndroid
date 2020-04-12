@@ -15,6 +15,7 @@ export default  class Game extends Component {
       super(props);     
       //players from option container
       this.playersFromOption =this.props.navigation.state.params.players.filter(x=> x.visibility); 
+      console.log(this.playersFromOption);
 
       this.decisionContainer = React.createRef();
       this.playersPanel = React.createRef();
@@ -54,7 +55,7 @@ export default  class Game extends Component {
             </ImageBackground>
           </View>
           <DecisionContainer ref={this.decisionContainer} parentCallback={this.passEventToGame}/>
-          <PlayersPanel  ref={this.playersPanel}/>
+          <PlayersPanel playersFromOption={this.playersFromOption}  ref={this.playersPanel}/>
         </View>
       );
     }

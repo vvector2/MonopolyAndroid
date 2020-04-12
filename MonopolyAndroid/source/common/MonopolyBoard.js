@@ -1,4 +1,4 @@
-import{ Field } from "./Field";
+import{ Field, FieldFactory } from "./Fields";
 import {canvasHeight, canvasWidth} from "./Helper"
 
 export const VERTICAL_FIELD_SIZE = { w: 0.081521739 * canvasWidth, h:0.149* canvasHeight };
@@ -10,29 +10,21 @@ export const DIRECTIONS = {
   DOWN: 3,
   RIGHT: 4,
 }
+export const HOUSE_SIZE = { w: 10, h: 10 };
 export class MonopolyBoard  {
   constructor() {
     this.fields = this._getFieldsPositions();
   }
   _getFieldsPositions() {
     let fields = [];
+    const fieldFactory = new FieldFactory();
     fields[0] = new Field(0, 0, BIG_FIELD_SIZE.w, BIG_FIELD_SIZE.h, 0);
     for (let j = 1; j < 40; j++) {
-      fields[j] = new Field(
-        this._getNextFieldX(
-          fields[j - 1],
-          this._getDirection(j),
-          this._getFieldSize(j),
-        ),
-        this._getNextFieldY(
-          fields[j - 1],
-          this._getDirection(j),
-          this._getFieldSize(j),
-        ),
-        this._getFieldSize(j).w,
-        this._getFieldSize(j).h,
-        j
-      );
+      let x = this._getNextFieldX(fields[j - 1],this._getDirection(j),this._getFieldSize(j));
+      let y = this._getNextFieldY(fields[j - 1],this._getDirection(j),this._getFieldSize(j));
+      let w = this._getFieldSize(j).w;
+      let h = this._getFieldSize(j).h;
+      fields[j] = fieldFactory.getField(x,y,w,h,j);
     }
     return fields;
   }
@@ -92,4 +84,22 @@ export class MonopolyBoard  {
     return {x : field.x +fieldSize.w /2 , y : field.y + fieldSize.h/2 };
   }
   getfieldById(id){return this.fields[id];}
+
+  getHouseCoord(id) {
+    const field = this.fields[id];
+    const direction = this._getDirection(id);
+
+    if (direction === DIRECTIONS.RIGHT) {
+      return {x:field.x + (field.w/2) -(HOUSE_SIZE.w/2) , y : field.y + field.h - (HOUSE_SIZE.h/2)  };
+    }
+    else if (direction === DIRECTIONS.DOWN) {
+      return {x:field.x -(HOUSE_SIZE.w/2), y : field.y + (field.h/2) - (HOUSE_SIZE.h/2)  };
+    }
+    else if (direction === DIRECTIONS.UP) {
+      return {x:field.x + field.w -(HOUSE_SIZE.w/2) , y : field.y + (field.h/2) - (HOUSE_SIZE.h/2) };
+    }
+    else if (direction === DIRECTIONS.LEFT) {
+      return {x:field.x + (field.w/2) -(HOUSE_SIZE.w/2) , y : field.y - (HOUSE_SIZE.h/2)  };
+    }
+  }
 }

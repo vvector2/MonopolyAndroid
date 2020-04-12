@@ -90,7 +90,10 @@ export const gameStyles = StyleSheet.create({
     alignItems : "center"
   },
   playerPanelContainer : {
-    justifyContent : "space-evenly"
+  },
+  playerPanel : {
+    marginTop: 10, 
+    marginBottom: 10
   },
   canvas : {
     position: 'absolute',

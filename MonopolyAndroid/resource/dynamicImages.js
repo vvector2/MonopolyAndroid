@@ -12,123 +12,123 @@
 
 export const lands  = [
   {
-    name: "??1",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??1",  src : require('./land0.jpg')
   },
   {
-    name: "??2",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??2",  src : require('./land0.jpg')
   },
   {
-    name: "??3",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??3",  src : require('./land0.jpg')
   },
   {
-    name: "?4",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "?4",  src : require('./land0.jpg')
   },
   {
-    name: "?5?",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "?5?",  src : require('./land0.jpg')
   },
   {
-    name: "??6",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??6",  src : require('./land0.jpg')
   },
   {
-    name: "??7",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??7",  src : require('./land0.jpg')
   },
   {
-    name: "?8?",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "?8?",  src : require('./land0.jpg')
   },
   {
-    name: "??9",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??9",  src : require('./land0.jpg')
   },
   {
-    name: "??10",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??10",  src : require('./land0.jpg')
   },
   {
-    name: "??11",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??11",  src : require('./land0.jpg')
   },
   {
-    name: "??12",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??12",  src : require('./land0.jpg')
   },
   {
-    name: "??13",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??13",  src : require('./land0.jpg')
   },
   {
-    name: "??14",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??14",  src : require('./land0.jpg')
   },
   {
-    name: "?15?",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "?15?",  src : require('./land0.jpg')
   },
   {
-    name: "?16?",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "?16?",  src : require('./land0.jpg')
   },
   {
-    name: "?17?",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "?17?",  src : require('./land0.jpg')
   },
   {
-    name: "??18",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??18",  src : require('./land0.jpg')
   },
   {
-    name: "??19",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??19",  src : require('./land0.jpg')
   },
   {
-    name: "??20",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??20",  src : require('./land0.jpg')
   },
   {
-    name: "??21",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??21",  src : require('./land0.jpg')
   },
   {
-    name: "??22",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??22",  src : require('./land0.jpg')
   },
   {
-    name: "??23",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??23",  src : require('./land0.jpg')
   },
   {
-    name: "??24",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??24",  src : require('./land0.jpg')
   },
   {
-    name: "??25",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??25",  src : require('./land0.jpg')
   },
   {
-    name: "??26",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??26",  src : require('./land0.jpg')
   },
   {
-    name: "??27",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??27",  src : require('./land0.jpg')
   },
   {
-    name: "??28",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??28",  src : require('./land0.jpg')
   },
   {
-    name: "??29",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??29",  src : require('./land0.jpg')
   },
   {
-    name: "??30",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??30",  src : require('./land0.jpg')
   },
   {
-    name: "??31",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??31",  src : require('./land0.jpg')
   },
   {
-    name: "??32",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??32",  src : require('./land0.jpg')
   },
   {
-    name: "??33",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??33",  src : require('./land0.jpg')
   },
   {
-    name: "??34",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??34",  src : require('./land0.jpg')
   },
   {
-    name: "??35",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??35",  src : require('./land0.jpg')
   },
   {
-    name: "??36",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??36",  src : require('./land0.jpg')
   },
   {
-    name: "??37",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??37",  src : require('./land0.jpg')
   },
   {
-    name: "??38",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??38",  src : require('./land0.jpg')
   },
   {
-    name: "??39",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??39",  src : require('./land0.jpg')
   },
   {
-    name: "??40",  src : require('./land0.jpg'), costLand : 10 , costHouse : 5
+    name: "??40",  src : require('./land0.jpg')
   },
 ]
