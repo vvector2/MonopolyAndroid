@@ -61,6 +61,7 @@ export const gameStyles = StyleSheet.create({
     marginTop: 10,
     marginLeft: 10,
     marginBottom: 10,
+    marginRight: 10,
     width: canvasWidth, 
     height: canvasHeight,
     borderTopWidth: 3,
@@ -99,6 +100,6 @@ export const gameStyles = StyleSheet.create({
     position: 'absolute',
     zIndex: 1,
     width: canvasWidth, 
-    height: canvasHeight,
+    height: canvasHeight
   }
 });

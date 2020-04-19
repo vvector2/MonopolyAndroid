@@ -1,16 +1,16 @@
 import{ Field, FieldFactory } from "./Fields";
 import {canvasHeight, canvasWidth} from "./Helper"
 
-export const VERTICAL_FIELD_SIZE = { w: 0.081521739 * canvasWidth, h:0.149* canvasHeight };
-export const HORIZONTAL_FIELD_SIZE ={ w: 0.149 * canvasWidth, h: 0.081521739 * canvasHeight };
-export const BIG_FIELD_SIZE = { w: 0.149 * canvasWidth, h: 0.149 * canvasHeight };
+export const VERTICAL_FIELD_SIZE = { w: 0.082 * canvasWidth, h:0.132* canvasHeight };
+export const HORIZONTAL_FIELD_SIZE ={ w: 0.130 * canvasWidth, h: 0.082 * canvasHeight };
+export const BIG_FIELD_SIZE = { w: 0.129 * canvasWidth, h: 0.132* canvasHeight };
 export const DIRECTIONS = {
   UP: 1,
   LEFT: 2,
   DOWN: 3,
   RIGHT: 4,
 }
-export const HOUSE_SIZE = { w: 10, h: 10 };
+export const HOUSE_SIZE = { w: 15, h: 15 };
 export class MonopolyBoard  {
   constructor() {
     this.fields = this._getFieldsPositions();
@@ -26,6 +26,14 @@ export class MonopolyBoard  {
       let h = this._getFieldSize(j).h;
       fields[j] = fieldFactory.getField(x,y,w,h,j);
     }
+    console.log("field log:");
+    console.log(fields);
+    console.log("canvas:");
+    console.log(canvasWidth);
+    console.log(canvasHeight);
+    console.log(BIG_FIELD_SIZE);
+    console.log(HORIZONTAL_FIELD_SIZE);
+
     return fields;
   }
   _getNextFieldX(field, direction, nextFieldSize) {

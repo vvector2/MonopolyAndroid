@@ -89,9 +89,12 @@ export class MonopolyGame {
         this.gameState.showBuyButton = false;
     }
     _upgrade(data){
+        console.log("upgrade house");
         const currentFieldId = this.currentPlayer.idField;
         const field = this.board.getfieldById(currentFieldId);
-        this.currentPlayer.buyHouse(field);
+        this.currentPlayer.buyHouse(field,this.renderer);
+        this.gameState.playerGold[this.currentPlayerI] = this.currentPlayer.gold;
+        this.gameState.showUpgradeButton = false;
     }
     _endTurn(data){
         console.log("end turn event");

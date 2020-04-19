@@ -40,13 +40,14 @@ export class Player {
         renderer.render()
     }
     buyHouse(field, renderer){
+        console.log("buying a house");
         field.punishment += field.costLand;
         this.gold-= 200;
 
         const cord = this.board.getHouseCoord(field.id);
         const imageElm = new ImageElement(cord.x, cord.y , HOUSE_SIZE.w, HOUSE_SIZE.h);
-        imageElm.setImage(renderer,2,dynamicImages.house[id]);
-        renderer.addRenderObject(imageElm)
+        imageElm.setImage(renderer,2,dynamicImages.house[this.id]);
+        renderer.addRenderObject(imageElm,2)
         renderer.render()
     }
 }
