@@ -101,5 +101,21 @@ export const gameStyles = StyleSheet.create({
     zIndex: 1,
     width: canvasWidth, 
     height: canvasHeight
+  },
+  gameOverPopup : {
+    position : "absolute",
+    width : windowWidth /2,
+    height: windowHeight /2,
+    top: windowHeight/4 , 
+    left : windowWidth/4,
+    alignItems : "center",
+    justifyContent : "center",
+    borderTopWidth: 5,
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
+    borderBottomWidth: 5,
+    borderColor: 'silver',
+    backgroundColor : "gold", 
+    opacity : 0.9
   }
 });

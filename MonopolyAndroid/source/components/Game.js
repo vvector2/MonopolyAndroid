@@ -8,17 +8,20 @@ import {MonopolyGame } from '../common/MonolopyGame';
 import {Renderer} from "./../common/Renderer";
 import {canvasWidth, canvasHeight} from "./../common/Helper";
 import {GameState } from "../common/GameState";
+import {GameOverComponent} from "./GameOver";
 
 
 export default  class Game extends Component {
     constructor(props){
-      super(props);     
+      super(props);
+      this.state = {gameOver: false};     
       //players from option container
       this.playersFromOption =this.props.navigation.state.params.players.filter(x=> x.visibility); 
       console.log(this.playersFromOption);
 
       this.decisionContainer = React.createRef();
       this.playersPanel = React.createRef();
+      this.gameOverPopup = React.createRef();
       this.passEventToGame = this.passEventToGame.bind(this);
     }
     _updateGameState(gameState){
@@ -26,6 +29,9 @@ export default  class Game extends Component {
       //console.log(this.decisionContainer.current);
       this.decisionContainer.current.updateGameState(gameState);
       this.playersPanel.current.updateGameState(gameState);
+      this.setState({gameOver : gameState.state ==="gameOver"});
+      if(this.state.gameOver)
+        this.gameOverPopup.current.updateGameState(gameState);
     }
 
     //handling canvas
@@ -56,6 +62,7 @@ export default  class Game extends Component {
           </View>
           <DecisionContainer ref={this.decisionContainer} parentCallback={this.passEventToGame}/>
           <PlayersPanel playersFromOption={this.playersFromOption}  ref={this.playersPanel}/>
+          { this.state.gameOver && (<GameOverComponent ref={this.gameOverPopup} />) }
         </View>
       );
     }

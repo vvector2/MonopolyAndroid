@@ -3,6 +3,7 @@ import ImageElement from "./ImageElement";
 import {dynamicImages} from "../../resource/dynamicImages";
 import {MonopolyBoard} from "./MonopolyBoard";
 import { GameState } from "./GameState";
+import {getColorByPlayerId} from "./Helper";
 
 const PAWN_SIZE = { w: 20, h: 30 };
 const COLORS = ["rgba(255,204,0,1)", "rgba(83,253,0,1)", "rgba(253,0,41,1)", "rgba(0,255,210,1)"]
@@ -54,7 +55,7 @@ export class MonopolyGame {
             this.numberOfPlayer = this.playerList.length;
             if(this.numberOfPlayer==1){
                 this.gameState.state = "gameOver";
-                this.gameState.playerNameWin = this.playerList[0].name;
+                this.gameState.playerNameWin = getColorByPlayerId(this.playerList[0].id);
             }
         }
     }
@@ -75,6 +76,7 @@ export class MonopolyGame {
         const currentFieldId = this.currentPlayer.idField;
         const field =this.board.getfieldById(currentFieldId);
         this._handlingPunishForPlayer(field);
+        this._handlingGameOver();
         this.gameState.showBuyButton = field.costLand <= this.currentPlayer.gold && field.isBuyable;
         this.gameState.showUpgradeButton = this._canPlayerUpgradeField(field)
         this.gameState.field = field; 
