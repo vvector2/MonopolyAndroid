@@ -14,16 +14,14 @@ export class Player {
         this.rgbColorString = rgbColorString // rgb string color
     }
     moveNext(renderer,n, endCallack) {
-        //console.log("move next data: " + String(n));
         if(n==0) {
+            console.log("it is time for callback");
             endCallack({name:"endMove", data:{}});
             return;
         }
         this.pawn.toRender = true;
         this.idField = (this.idField + 1 ) %40;
         const cord = this.board.getFieldCenter(this.idField);
-        console.log("cord: ");
-        console.log(cord);
         this.pawn.x = cord.x - (this.pawn.w /2);
         this.pawn.y = cord.y - (this.pawn.h /2);
         //console.log("render x y:" + String(this.pawn.x)+ String(this.pawn.y))
@@ -50,4 +48,5 @@ export class Player {
         renderer.addRenderObject(imageElm,2)
         renderer.render()
     }
+    GetNextEvent(previousEvent,gameState) {return null};
 }

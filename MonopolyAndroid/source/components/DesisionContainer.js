@@ -19,8 +19,6 @@ export class DecisionContainer extends Component {
         this.rollEvent = this.rollEvent.bind(this);  
     }
     updateGameState(gameState) {
-        console.log("update game state in decision container");
-        console.log(gameState);
         this.setState({
             roll: gameState.state =="roll",
             imgSource: gameState.field.src,

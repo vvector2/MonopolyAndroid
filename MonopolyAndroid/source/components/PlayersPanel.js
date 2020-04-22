@@ -15,10 +15,7 @@ export class PlayersPanel extends Component {
         console.log(this.state);
     }
     updateGameState(gameState) {
-      console.log("update game state in player panel");
-      console.log(gameState);
       const players = this.state.players;
-      console.log(players);
       for(let i =0; i < gameState.playerGold.length ; i ++) 
         players[i].gold = gameState.playerGold[i];
       this.setState({players: players})
