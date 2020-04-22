@@ -41,6 +41,8 @@ export class MonopolyGame {
             this._endTurn();
         else if (event.name == "endMove")
             this._endMove();
+        else if (event.name =="roll")
+            this._roll();
     }
     _movePawn(data) {
         this.currentPlayer.moveNext(this.renderer, data.number, this.gameloop.bind(this));
@@ -48,9 +50,12 @@ export class MonopolyGame {
     _handlingPunishForPlayer(field) {
         if(field.own!=null && field.own.id !== this.currentPlayerI){
             this.currentPlayer.gold -= field.punishment; 
+            field.own.gold += field.punishment;
             this.gameState.playerGold[this.currentPlayerI] = this.currentPlayer.gold;
+            this.gameState.playerGold[field.own.id] = field.own.gold;   
         }
     }
+
     _handlingGameOver(){
         if(this.currentPlayer.gold < 0) {
             this.playerList = this.playerList.filter(p=> p.id != this.currentPlayerI);
@@ -62,16 +67,25 @@ export class MonopolyGame {
         }
     }
     _canPlayerUpgradeField(field) {
-        if(this.currentPlayer.gold < 200 || field.isBuyable) {
+        // return true;
+        if(this.currentPlayer.gold < 200 || !field.isBuyable) {
             return false;
         }
-        const sectorId = parseInt(field.id / 5 )
-        const numberLandInSector = this.currentPlayer.listOfLand
-            .filter(x=> x.id  > sectorId * 5 && x.id < (sectorId+1) *5 ).length;
-        if (sectorId ===4 || sectorId ===  5){
-            return numberLandInSector ===2;
-        } else return numberLandInSector ===3;
+        //If player have 3 fields in row then can upgrade
+        const fieldsInRow1 = this.currentPlayer.listOfLand.filter(f => f.id >= field.id - 2 
+            && f.id <= field.id).length
+        const fieldsInRow2 = this.currentPlayer.listOfLand.filter(f => f.id >= field.id - 1
+            && f.id <= field.id + 1).length
+        const fieldsInRow3 = this.currentPlayer.listOfLand.filter(f => f.id >= field.id
+                && f.id <= field.id + 2).length
+        
+        return Math.max(fieldsInRow1, fieldsInRow2, fieldsInRow3) === 3
     }
+
+    _canPlayerBuyField(field) {
+        return field.own == null && field.costLand <= this.currentPlayer.gold && field.isBuyable;
+    }
+
 
     _endMove(){
         this.gameState.state = "action";
@@ -86,6 +100,9 @@ export class MonopolyGame {
     _buy() {
         const currentFieldId = this.currentPlayer.idField;
         const field = this.board.getfieldById(currentFieldId);
+        
+        if(!this._canPlayerBuyField(field) || this.gameState.showBuyButton === false) return false;
+        
         this.currentPlayer.addNewLand(field,this.renderer);
         console.log(this.currentPlayer.gold);
         this.gameState.playerGold[this.currentPlayerI] = this.currentPlayer.gold;
@@ -94,6 +111,9 @@ export class MonopolyGame {
     _upgrade(){
         const currentFieldId = this.currentPlayer.idField;
         const field = this.board.getfieldById(currentFieldId);
+        
+        if(!this._canPlayerUpgradeField(field) || this.gameState.showUpgradeButton === false) return false;
+        
         this.currentPlayer.buyHouse(field,this.renderer);
         this.gameState.playerGold[this.currentPlayerI] = this.currentPlayer.gold;
         this.gameState.showUpgradeButton = false;
@@ -103,6 +123,13 @@ export class MonopolyGame {
         this.currentPlayer = this.playerList[this.currentPlayerI];
         this.gameState.state = "roll";
     }
+    
+    _roll(){
+        let result = 1//Math.floor((Math.random() * 11)) + 2
+        if(this.currentPlayer.idField ===3 ) result = 38;
+        this.gameloop({name:"move", data:{number:result }});
+    }
+ 
     _handlingNextEvent(previousEvent){
         const nextEvent = this.currentPlayer.GetNextEvent(previousEvent, this.gameState);
         if(nextEvent!=null){

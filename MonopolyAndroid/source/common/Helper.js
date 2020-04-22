@@ -18,3 +18,4 @@ const windowWidth = GetWindowWidth();
 const windowHeight = GetWindowHeight();
 export const canvasWidth = (windowWidth /2) +10;
 export const canvasHeight = windowHeight -40;
+export const boardWidth = Math.min(canvasWidth, canvasHeight);

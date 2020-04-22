@@ -6,7 +6,7 @@ import {DecisionContainer} from "./DesisionContainer";
 import {PlayersPanel} from "./PlayersPanel";
 import {MonopolyGame } from '../common/MonolopyGame';
 import {Renderer} from "./../common/Renderer";
-import {canvasWidth, canvasHeight} from "./../common/Helper";
+import {canvasWidth, canvasHeight, boardWidth} from "./../common/Helper";
 import {GameState } from "../common/GameState";
 import {GameOverComponent} from "./GameOver";
 
@@ -35,7 +35,7 @@ export default  class Game extends Component {
     }
 
     //handling canvas
-    setCanvas = c => {c.width = canvasWidth;c.height = canvasHeight;}
+    setCanvas = c => {c.width = boardWidth;c.height = boardWidth;}
     handlePawnCanvas = c =>{this.setCanvas(c); this.pawnCanvas=c;this.startGame(); }
     handleLandCanvas = c =>{this.setCanvas(c); this.landCanvas=c;this.startGame(); }
     handleHouseCanvas = c =>{this.setCanvas(c); this.houseCanvas=c;this.startGame(); }
@@ -54,9 +54,9 @@ export default  class Game extends Component {
       return (
         <View style={gameStyles.gameScreen}>
           <View style={gameStyles.canvasContainer}>
-            <ImageBackground source={require('./../../resource/board.jpg')}  style={{width: '100%', height: '100%'}}>
-              <Canvas style={gameStyles.canvas} ref={this.handlePawnCanvas} />
+            <ImageBackground source={require('./../../resource/board.jpg')}  style={{width: boardWidth, height: boardWidth}}>
               <Canvas style={gameStyles.canvas} ref={this.handleLandCanvas} />
+              <Canvas style={gameStyles.canvas} ref={this.handlePawnCanvas} />
               <Canvas style={gameStyles.canvas} ref={this.handleHouseCanvas} />
             </ImageBackground>
           </View>

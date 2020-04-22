@@ -25,7 +25,9 @@ export class DecisionContainer extends Component {
             name: gameState.field.name,
             cost: gameState.field.costLand,
             showUpgradeButton:gameState.showUpgradeButton,
-            showBuyButton: gameState.showBuyButton});
+            showBuyButton: gameState.showBuyButton,
+            showActions: gameState.showActions
+        });
     }
     buyEvent(){
         this.props.parentCallback({name:"buy", data:{}});
@@ -37,10 +39,10 @@ export class DecisionContainer extends Component {
         this.props.parentCallback({name:"endTurn", data:{}});
     }
     rollEvent(){
-        const result = parseInt((Math.random() * 6)) + 1 
-        this.props.parentCallback({name:"move", data:{number:result }});
+        this.props.parentCallback({name:"roll", data:{}});
     }
     getActionContaner() { 
+        if(this.state.showActions === false) return false;
         if (this.state.roll){
             return (
             <View style={gameStyles.gameActionContainer}>

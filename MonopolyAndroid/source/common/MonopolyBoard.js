@@ -1,9 +1,9 @@
 import{ Field, FieldFactory } from "./Fields";
-import {canvasHeight, canvasWidth} from "./Helper"
+import {canvasHeight, canvasWidth, boardWidth} from "./Helper"
 
-export const VERTICAL_FIELD_SIZE = { w: 0.082 * canvasWidth, h:0.132* canvasHeight };
-export const HORIZONTAL_FIELD_SIZE ={ w: 0.130 * canvasWidth, h: 0.082 * canvasHeight };
-export const BIG_FIELD_SIZE = { w: 0.129 * canvasWidth, h: 0.132* canvasHeight };
+export const VERTICAL_FIELD_SIZE = { w: 100/3/400 * boardWidth, h: 49/400* boardWidth };
+export const HORIZONTAL_FIELD_SIZE ={ w: 49/400 * boardWidth, h: 100/3/400 * boardWidth };
+export const BIG_FIELD_SIZE = { w: 50/400 * boardWidth, h: 50/400 * boardWidth };
 export const DIRECTIONS = {
   UP: 1,
   LEFT: 2,

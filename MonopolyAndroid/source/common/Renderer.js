@@ -19,7 +19,7 @@ export class Renderer {
                 //so we have items to render
                 this.listContext[i].clearRect(0, 0, canvasWidth, canvasHeight);
                 let itemsToRender = this.items[i];
-                itemsToRender.forEach(x => x.draw(this.listContext[i]));
+                itemsToRender.sort((a,b) => a.y - b.y).forEach(x => x.draw(this.listContext[i]));
             }
         }
     }
