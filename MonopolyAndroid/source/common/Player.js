@@ -6,7 +6,7 @@ import {dynamicImages} from "../../resource/dynamicImages";
 export class Player {
     constructor(pawn,board,rgbColorString, id ) {
         this.pawn= pawn;
-        this.gold = 150;
+        this.gold = 1500;
         this.board = board;
         this.idField = 0;
         this.listOfLand = [];
