@@ -125,8 +125,7 @@ export class MonopolyGame {
     }
     
     _roll(){
-        let result = 1//Math.floor((Math.random() * 11)) + 2
-        if(this.currentPlayer.idField ===3 ) result = 38;
+        let result = Math.floor((Math.random() * 11)) + 2
         this.gameloop({name:"move", data:{number:result }});
     }
  
