@@ -13,6 +13,10 @@ export class Renderer {
     addRenderObject(element, zIndex) {
         this.items[zIndex].push(element);
     }
+    removeRenderObject(element) {
+        for(let i =0; i < 3 ;i++)
+            this.items[i] = this.items[i].filter(e => e !== element)
+    }
     render() {
         for(let i =0; i < 3 ;i++){
             if(this.items[i].filter(item=> item.toRender).length >0){
