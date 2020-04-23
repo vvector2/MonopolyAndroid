@@ -55,7 +55,7 @@ export class MonopolyGame {
         if(this.currentPlayer.gold < 0) {
             this.playerList = this.playerList.filter(p=> p.id != this.currentPlayerI);
             this.numberOfPlayer = this.playerList.length;
-            if(this.numberOfPlayer==1){
+            if(this.numberOfPlayer==1 ){
                 this.gameState.state = "gameOver";
                 this.gameState.playerNameWin = getColorByPlayerId(this.playerList[0].id);
             }
@@ -79,7 +79,9 @@ export class MonopolyGame {
         const field =this.board.getfieldById(currentFieldId);
         this._handlingPunishForPlayer(field);
         this._handlingGameOver();
-        this.gameState.showBuyButton = field.costLand <= this.currentPlayer.gold && field.isBuyable;
+        this.gameState.showBuyButton = field.costLand <= this.currentPlayer.gold && 
+            field.isBuyable &&
+            !this.playerList.filter(x=> x.listOfLand.filter(x=>x.id===currentFieldId ).length >0).length >0;
         this.gameState.showUpgradeButton = this._canPlayerUpgradeField(field)
         this.gameState.field = field; 
     }
@@ -101,7 +103,8 @@ export class MonopolyGame {
     _endTurn(){
         this.currentPlayerI = (this.currentPlayerI + 1 ) % this.numberOfPlayer;
         this.currentPlayer = this.playerList[this.currentPlayerI];
-        this.gameState.state = "roll";
+        if(!this.currentPlayer.isBot)
+            this.gameState.state = "roll";
     }
     _handlingNextEvent(previousEvent){
         const nextEvent = this.currentPlayer.GetNextEvent(previousEvent, this.gameState);

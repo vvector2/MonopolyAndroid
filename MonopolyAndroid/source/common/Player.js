@@ -6,12 +6,13 @@ import {dynamicImages} from "../../resource/dynamicImages";
 export class Player {
     constructor(pawn,board,rgbColorString, id ) {
         this.pawn= pawn;
-        this.gold = 1500;
+        this.gold = 150;
         this.board = board;
         this.idField = 0;
         this.listOfLand = [];
         this.id = id;
         this.rgbColorString = rgbColorString // rgb string color
+        this.isBot=false;
     }
     moveNext(renderer,n, endCallack) {
         if(n==0) {
