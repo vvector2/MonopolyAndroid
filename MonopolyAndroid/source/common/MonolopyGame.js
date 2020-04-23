@@ -51,7 +51,7 @@ export class MonopolyGame {
     }
     _handlingPunishForPlayer(field) {
         if(field.own!=null && field.own.id !== this.currentPlayerI){
-            this._addGoldToPlayer(this.currentPlayer, -100 * field.punishment)
+            this._addGoldToPlayer(this.currentPlayer, -1 * field.punishment)
             this._addGoldToPlayer(field.own, field.punishment)
         }
     }
