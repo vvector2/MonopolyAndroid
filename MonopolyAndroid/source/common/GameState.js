@@ -9,6 +9,7 @@ export class GameState {
         this.showUpgradeButton = false;
         this.updateCallback=updateCallback;
         this.playerNameWin = "";
+        this.showActions = true;
     }
     update() {
         this.updateCallback(this);

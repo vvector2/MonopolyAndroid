@@ -23,9 +23,9 @@ export class FieldLand extends Field {
 }
 
 export class FieldFactory{
-    buyingLand = [1,3,4,6,7,9,11,12,14,17,19,21,23,26,28,29,31,33,34,36,38,39];
+    notBuyAbleLands = [0,10,20,30]
     getField(x,y,w,h,id){
-        if(this.buyingLand.includes(id)) return new FieldLand(x,y,w,h,id);
+        if(!this.notBuyAbleLands.includes(id)) return new FieldLand(x,y,w,h,id);
         else return new Field(x,y,w,h,id);
     }
 }

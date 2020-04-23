@@ -1,5 +1,5 @@
 import {StyleSheet}  from 'react-native';
-import {GetWindowWidth,GetWindowHeight,canvasWidth, canvasHeight} from '../common/Helper';
+import {GetWindowWidth,GetWindowHeight,canvasWidth, canvasHeight, boardWidth} from '../common/Helper';
 const windowWidth = GetWindowWidth();
 const windowHeight = GetWindowHeight();
 
@@ -62,13 +62,8 @@ export const gameStyles = StyleSheet.create({
     marginLeft: 10,
     marginBottom: 10,
     marginRight: 10,
-    width: canvasWidth, 
-    height: canvasHeight,
-    borderTopWidth: 3,
-    borderLeftWidth: 3,
-    borderRightWidth: 3,
-    borderBottomWidth: 3,
-    borderColor: 'silver',
+    width: boardWidth, 
+    height: boardWidth,
   },
   decisionContainer : {
     flexDirection: "column",

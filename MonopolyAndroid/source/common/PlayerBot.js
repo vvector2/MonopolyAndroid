@@ -15,8 +15,7 @@ export class PlayerBot extends Player {
             else 
                 return {name: "endTurn"};
         }else if (previousEvent.name === "endTurn"){
-            const rndNumber = parseInt((Math.random() * 6)) + 1 ;
-            return {name: "move", data: {number: rndNumber}};
+            return {name: "roll"};
         }else if (previousEvent.name === "buy" ||previousEvent.name === "upgrade" )
             return  {name: "endTurn"};
         return null;
