@@ -113,6 +113,7 @@ export class MonopolyGame {
             !this.playerList.filter(x=> x.listOfLand.filter(x=>x.id===currentFieldId ).length >0).length >0;
         this.gameState.showUpgradeButton = this._canPlayerUpgradeField(field)
         this.gameState.field = field; 
+        this.gameState.showActions = !this.currentPlayer.isBot;
         this._handlingSpecialFields(field);
     }
     _buy() {
@@ -122,7 +123,6 @@ export class MonopolyGame {
         if(!this._canPlayerBuyField(field) || this.gameState.showBuyButton === false) return false;
         
         this.currentPlayer.addNewLand(field,this.renderer);
-        console.log(this.currentPlayer.gold);
         this.gameState.playerGold[this.currentPlayerI] = this.currentPlayer.gold;
         this.gameState.showBuyButton = false;
     }
@@ -143,13 +143,18 @@ export class MonopolyGame {
             this.currentPlayerI = (this.currentPlayerI + 1 ) % this.numberOfPlayer;
             this.currentPlayer = this.playerList[this.currentPlayerI];
         }
+        //current player will be player for the next turn
         if(!this.currentPlayer.isBot)
             this.gameState.state = "roll";
+        this.gameState.showActions = !this.currentPlayer.isBot;
     }
     
     _roll(){
         let result = Math.floor((Math.random() * 11)) + 2
-        this.gameloop({name:"move", data:{number:result }});
+        const gameLoopFunc = this.gameloop.bind(this);
+        setTimeout(() => gameLoopFunc({name:"move", data:{number:result }}), 0);
+        //disabling action
+        this.gameState.showActions = false;
     }
  
     _handlingNextEvent(previousEvent){
@@ -166,9 +171,10 @@ export class MonopolyGame {
     gameloop(event) {
         if(this.gameOver)
             return 0;
-        console.log("event");
-        console.log(event);
+        //console.log('event')
+        //console.log(event)
         this._resolveEvent(event);
+        //console.log(this.gameState)
         this.gameState.update();
         this._handlingNextEvent(event);
     }

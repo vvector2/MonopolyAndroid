@@ -26,13 +26,6 @@ export class MonopolyBoard  {
       let h = this._getFieldSize(j).h;
       fields[j] = fieldFactory.getField(x,y,w,h,j);
     }
-    console.log("field log:");
-    console.log(fields);
-    console.log("canvas:");
-    console.log(canvasWidth);
-    console.log(canvasHeight);
-    console.log(BIG_FIELD_SIZE);
-    console.log(HORIZONTAL_FIELD_SIZE);
 
     return fields;
   }
@@ -84,9 +77,6 @@ export class MonopolyBoard  {
     return HORIZONTAL_FIELD_SIZE;//left column
   }
   getFieldCenter(id) {
-    //console.log(canvasWidth);
-    //console.log(canvasHeight);
-    //console.log(this.fields);
     const field = this.fields[id];
     const fieldSize = this._getFieldSize(id);
     return {x : field.x +fieldSize.w /2 , y : field.y + fieldSize.h/2 };

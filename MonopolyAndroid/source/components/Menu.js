@@ -17,12 +17,6 @@ export default class Menu extends Component {
             color="silver" 
             onPress={() => this.props.navigation.navigate('Options')} />
           </View>
-          <View style={commonStyles.primaryButton} >
-            <Button 
-            title="Multiplayer"
-            color="silver" 
-            onPress={() => this.props.navigation.navigate('Options')} />
-          </View>
         </View>
       </LinearGradiant>
     );
