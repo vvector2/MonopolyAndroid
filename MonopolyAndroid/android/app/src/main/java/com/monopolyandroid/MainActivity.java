@@ -1,5 +1,5 @@
 package com.monopolyandroid;
-
+import android.media.MediaPlayer;
 import com.facebook.react.ReactActivity;
 
 public class MainActivity extends ReactActivity {

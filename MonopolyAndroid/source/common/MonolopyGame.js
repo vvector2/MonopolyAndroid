@@ -5,12 +5,20 @@ import {MonopolyBoard} from "./MonopolyBoard";
 import { GameState } from "./GameState";
 import {getColorByPlayerId} from "./Helper";
 import {PlayerBot} from "./PlayerBot";
+var Sound = require('react-native-sound');
 
 const PAWN_SIZE = { w: 20, h: 30 };
 export class MonopolyGame {
     constructor(playersFromSettings,renderer, gameState) {
         this.doubleTurn = false;
         this.gameOver= false;
+        var gameSound = new Sound('menu.mp3', Sound.MAIN_BUNDLE, (error) => {
+          if (error) {
+            console.log('failed to load the sound', error);
+            return;
+          }
+          gameSound.setNumberOfLoops(-1).play();
+          });
         this.playerList = [];
         this.renderer = renderer;
         this.board = new MonopolyBoard();
