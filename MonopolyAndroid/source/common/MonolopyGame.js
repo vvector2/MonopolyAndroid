@@ -7,7 +7,6 @@ import {getColorByPlayerId} from "./Helper";
 import {PlayerBot} from "./PlayerBot";
 
 const PAWN_SIZE = { w: 20, h: 30 };
-const COLORS = ["rgba(255,204,0,1)", "rgba(83,253,0,1)", "rgba(253,0,41,1)", "rgba(0,255,210,1)"]
 export class MonopolyGame {
     constructor(playersFromSettings,renderer, gameState) {
         this.doubleTurn = false;
@@ -22,8 +21,8 @@ export class MonopolyGame {
             renderer.addRenderObject(pawn, 0);
             let player;
             if(playersFromSettings[i].checkedBot)
-                player = new PlayerBot(pawn, this.board,COLORS[i],i);
-            else player = new Player(pawn, this.board,COLORS[i],i);
+                player = new PlayerBot(pawn, this.board,getColorByPlayerId(i),i);
+            else player = new Player(pawn, this.board,getColorByPlayerId(i),i);
             this.playerList.push(player);
         }
         this.currentPlayer = this.playerList[0];
