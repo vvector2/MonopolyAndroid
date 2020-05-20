@@ -53,5 +53,5 @@ export class Player {
         renderer.addRenderObject(imageElm,2)
         renderer.render()
     }
-    GetNextEvent(previousEvent,gameState) {return null};
+    GetNextEvent(previousEvent,gameState,game) {return null};
 }

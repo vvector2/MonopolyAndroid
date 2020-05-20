@@ -10,6 +10,8 @@ const PAWN_SIZE = { w: 20, h: 30 };
 const COLORS = ["rgba(255,204,0,1)", "rgba(83,253,0,1)", "rgba(253,0,41,1)", "rgba(0,255,210,1)"]
 export class MonopolyGame {
     constructor(playersFromSettings,renderer, gameState) {
+        this.doubleTurn = false;
+        this.gameOver= false;
         this.playerList = [];
         this.renderer = renderer;
         this.board = new MonopolyBoard();
@@ -49,18 +51,31 @@ export class MonopolyGame {
     }
     _handlingPunishForPlayer(field) {
         if(field.own!=null && field.own.id !== this.currentPlayerI){
-            this.currentPlayer.gold -= field.punishment; 
-            field.own.gold += field.punishment;
-            this.gameState.playerGold[this.currentPlayerI] = this.currentPlayer.gold;
-            this.gameState.playerGold[field.own.id] = field.own.gold;   
+            this._addGoldToPlayer(this.currentPlayer, -1 * field.punishment)
+            this._addGoldToPlayer(field.own, field.punishment)
         }
     }
 
-    _handlingGameOver(){
-        if(this.currentPlayer.gold < 0) {
-            this.playerList = this.playerList.filter(p=> p.id != this.currentPlayerI);
+    _handlingSpecialFields(field) {
+        if(field.id === 10) this._addGoldToPlayer(this.currentPlayer, -1 * Math.floor(Math.random() * 200 + 100));
+        if(field.id === 20) this.doubleTurn = true;
+        if(field.id === 30) this._addGoldToPlayer(this.currentPlayer, Math.floor(Math.random() * 200 + 100));
+    }
+
+    _addGoldToPlayer(player, gold) {
+        player.gold += Math.floor(gold);
+        this.gameState.playerGold[player.id] = Math.floor(player.gold);
+    }
+
+    
+
+    _handlingGameOver(player){
+        if(player.gold < 0) {
+            this.playerList = this.playerList.filter(p=> p.id != player.id);
             this.numberOfPlayer = this.playerList.length;
+            this.renderer.removeRenderObject(player.pawn)
             if(this.numberOfPlayer==1 ){
+                this.gameOver=true;
                 this.gameState.state = "gameOver";
                 this.gameState.playerNameWin = getColorByPlayerId(this.playerList[0].id);
             }
@@ -92,12 +107,13 @@ export class MonopolyGame {
         const currentFieldId = this.currentPlayer.idField;
         const field =this.board.getfieldById(currentFieldId);
         this._handlingPunishForPlayer(field);
-        this._handlingGameOver();
+        this._handlingGameOver(this.currentPlayer);
         this.gameState.showBuyButton = field.costLand <= this.currentPlayer.gold && 
             field.isBuyable &&
             !this.playerList.filter(x=> x.listOfLand.filter(x=>x.id===currentFieldId ).length >0).length >0;
         this.gameState.showUpgradeButton = this._canPlayerUpgradeField(field)
         this.gameState.field = field; 
+        this._handlingSpecialFields(field);
     }
     _buy() {
         const currentFieldId = this.currentPlayer.idField;
@@ -121,8 +137,12 @@ export class MonopolyGame {
         this.gameState.showUpgradeButton = false;
     }
     _endTurn(){
-        this.currentPlayerI = (this.currentPlayerI + 1 ) % this.numberOfPlayer;
-        this.currentPlayer = this.playerList[this.currentPlayerI];
+        if(this.doubleTurn) {
+            this.doubleTurn = false;
+        } else {
+            this.currentPlayerI = (this.currentPlayerI + 1 ) % this.numberOfPlayer;
+            this.currentPlayer = this.playerList[this.currentPlayerI];
+        }
         if(!this.currentPlayer.isBot)
             this.gameState.state = "roll";
     }
@@ -133,9 +153,10 @@ export class MonopolyGame {
     }
  
     _handlingNextEvent(previousEvent){
-        const nextEvent = this.currentPlayer.GetNextEvent(previousEvent, this.gameState);
+        const nextEvent = this.currentPlayer.GetNextEvent(previousEvent, this.gameState, this);
         if(nextEvent!=null){
             //it put event on queue
+
             const gameLoopFunc = this.gameloop.bind(this);
             setTimeout(() => gameLoopFunc(nextEvent), 0);
         }
@@ -143,6 +164,8 @@ export class MonopolyGame {
 
     //every event from visual interface come to this place
     gameloop(event) {
+        if(this.gameOver)
+            return 0;
         console.log("event");
         console.log(event);
         this._resolveEvent(event);
