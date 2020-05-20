@@ -12,7 +12,6 @@ export class PlayersPanel extends Component {
           players.push({name:"player "+ String(i+1), gold:1500, color: getColorByPlayerId(i)});
         }
         this.state = {players: players};
-        console.log(this.state);
     }
     updateGameState(gameState) {
       const players = this.state.players;

@@ -3,6 +3,7 @@ import { Player } from "./Player";
 export class PlayerBot extends Player {
     constructor(pawn,board,rgbColorString, id ) {
         super(pawn,board,rgbColorString, id );
+        this.isBot=true;
     }
 
     GetNextEvent(previousEvent,gameState, game) {

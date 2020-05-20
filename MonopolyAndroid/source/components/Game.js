@@ -17,7 +17,6 @@ export default  class Game extends Component {
       this.state = {gameOver: false};     
       //players from option container
       this.playersFromOption =this.props.navigation.state.params.players.filter(x=> x.visibility); 
-      console.log(this.playersFromOption);
 
       this.decisionContainer = React.createRef();
       this.playersPanel = React.createRef();
@@ -25,8 +24,6 @@ export default  class Game extends Component {
       this.passEventToGame = this.passEventToGame.bind(this);
     }
     _updateGameState(gameState){
-      //console.log("game component update fields");
-      //console.log(this.decisionContainer.current);
       this.decisionContainer.current.updateGameState(gameState);
       this.playersPanel.current.updateGameState(gameState);
       this.setState({gameOver : gameState.state ==="gameOver"});
