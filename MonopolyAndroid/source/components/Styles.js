@@ -119,5 +119,5 @@ export const gameStyles = StyleSheet.create({
     borderColor: 'silver',
     backgroundColor : "gold", 
     opacity : 0.9
-  }
+  },
 });

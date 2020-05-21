@@ -10,19 +10,20 @@ export class PlayersPanel extends Component {
     const players = [];
     const changes = [0, 0, 0, 0];
     for (let i = 0; i < playersFromOption.length; i++) {
-      players.push({ name: "player " + String(i + 1), gold: 1500, color: getColorByPlayerId(i) });
+      players.push({ name: playersFromOption[i].playerName, gold: 1500, color: getColorByPlayerId(i) });
     }
     this.state = { players: players, changes: changes };
     console.log(this.state);
   }
   updateGameState(gameState) {
+    const currentPlayerI = gameState.currentPlayerI;
     const players = this.state.players;
     const changes = [];
     for (let i = 0; i < gameState.playerGold.length; i++) {
       changes[i] = gameState.playerGold[i] - players[i].gold;
       players[i].gold = gameState.playerGold[i];
     }
-    this.setState({ players: players, changes: changes })
+    this.setState({ players: players, changes: changes, currentPlayerI: currentPlayerI })
     setTimeout(() => {
       this.hideIncomeInfo()
     }, 2000);
@@ -34,7 +35,9 @@ export class PlayersPanel extends Component {
   }
 
   playerInfo(player, idx) {
-    return (<View key={idx} style={[gameStyles.playerPanel, { padding: 5, borderRadius: 3, backgroundColor: "rgba(55,55,55,0.2)" }]} >
+    let bgColor = "rgba(55,55,55,0.3)";
+    if(idx == this.state.currentPlayerI) bgColor = "rgba(155,155,155,0.2)"
+    return (<View key={idx} style={[gameStyles.playerPanel, { padding: 5, borderRadius: 3, backgroundColor: bgColor}]} >
       <View style={{ flexDirection: "row" }}>
         <View style={{ width: 20, height: 20, borderRadius: 5, marginRight: 5, backgroundColor: getColorByPlayerId(idx) }}></View>
         <Text >{player.name}</Text>
