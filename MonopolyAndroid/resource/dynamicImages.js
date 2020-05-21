@@ -13,6 +13,14 @@
   }
 };
 
+export const dices = {
+  0: require('./d1.png'),
+  1: require('./d2.png'),
+  2: require('./d3.png'),
+  3: require('./d4.png'),
+  4: require('./d5.png'),
+  5: require('./d6.png'),
+}
 export const lands  = [
   {
     name: "city1",  src : require('./land0.jpg')

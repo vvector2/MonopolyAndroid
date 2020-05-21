@@ -10,9 +10,9 @@ export default class Options extends Component {
 
     this.state = {
       players : [ {visibility: true, checkedBot: false, playerName:"Player 1" },
-      {visibility: true, checkedBot: true, playerName:"Player 2" },
-      {visibility: false, checkedBot: true, playerName:"Player 3" },
-      {visibility: false, checkedBot: true, playerName:"Player 4" }] 
+      {visibility: true, checkedBot: true, playerName:"Bot 2" },
+      {visibility: false, checkedBot: true, playerName:"Bot 3" },
+      {visibility: false, checkedBot: true, playerName:"Bot 4" }] 
     }
     this.handleCheckBox = this.handleCheckBox.bind(this);
     this.handleShowUpButton = this.handleShowUpButton.bind(this);
@@ -20,6 +20,7 @@ export default class Options extends Component {
   handleCheckBox(i){
     const players = this.state.players;
     players[i].checkedBot=!players[i].checkedBot;
+    players[i].playerName = (players[i].checkedBot ? "Bot " : "Player ") + (i+1);
     this.setState({players});
   }
   handleShowUpButton(i){

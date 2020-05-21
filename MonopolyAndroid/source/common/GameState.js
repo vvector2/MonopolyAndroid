@@ -10,6 +10,8 @@ export class GameState {
         this.updateCallback=updateCallback;
         this.playerNameWin = "";
         this.showActions = true;
+        this.currentPlayerI = 0;
+        this.dices = null;
     }
     update() {
         this.updateCallback(this);

@@ -4,7 +4,7 @@ import {HOUSE_SIZE} from "./MonopolyBoard";
 import {dynamicImages} from "../../resource/dynamicImages";
 
 export class Player {
-    constructor(pawn,board,rgbColorString, id ) {
+    constructor(pawn,board,rgbColorString, id, name = "Player" ) {
         this.pawn= pawn;
         this.gold = 1500;
         this.board = board;
@@ -13,6 +13,7 @@ export class Player {
         this.id = id;
         this.rgbColorString = rgbColorString // rgb string color
         this.isBot=false;
+        this.name = name;
     }
     moveNext(renderer,n, endCallack) {
         if(n==0) {
@@ -40,6 +41,7 @@ export class Player {
         renderer.addRenderObject(new LandElement(field, this.rgbColorString), 1);
         renderer.render()
     }
+
     async buyHouse(field, renderer){
         field.punishment += field.costLand;
         this.gold-= 200;

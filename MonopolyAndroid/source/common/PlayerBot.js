@@ -1,8 +1,8 @@
 import { Player } from "./Player";
 
 export class PlayerBot extends Player {
-    constructor(pawn,board,rgbColorString, id ) {
-        super(pawn,board,rgbColorString, id );
+    constructor(pawn,board,rgbColorString, id, name="Bot" ) {
+        super(pawn,board,rgbColorString, id, name );
         this.isBot=true;
     }
 
@@ -16,7 +16,6 @@ export class PlayerBot extends Player {
         return null;
     }
 
-    
     makeDecision(gameState, game) {
         if(this.gold > 500 && gameState.showBuyButton)
             return {name:"buy", data:{}};

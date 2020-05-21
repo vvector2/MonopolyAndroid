@@ -55,15 +55,20 @@ export const gameStyles = StyleSheet.create({
     flexDirection: "row",
     display: "flex",
     flex :1 ,
-    justifyContent: "flex-start",
+    justifyContent: "space-between",
+    backgroundColor: "#e3decc",
+    width: GetWindowWidth(),
+    height: GetWindowWidth(),
   },
   canvasContainer : {
     marginTop: 10,
     marginLeft: 10,
     marginBottom: 10,
     marginRight: 10,
-    width: boardWidth, 
-    height: boardWidth,
+    width: boardWidth + 2, 
+    height: boardWidth + 2,
+    borderWidth: 1,
+    borderColor: "#777",
   },
   decisionContainer : {
     flexDirection: "column",
@@ -86,10 +91,12 @@ export const gameStyles = StyleSheet.create({
     alignItems : "center"
   },
   playerPanelContainer : {
+    marginRight: 10,
   },
   playerPanel : {
     marginTop: 10, 
-    marginBottom: 10
+    marginBottom: 10,
+    flexDirection: "column",
   },
   canvas : {
     position: 'absolute',
@@ -112,5 +119,5 @@ export const gameStyles = StyleSheet.create({
     borderColor: 'silver',
     backgroundColor : "gold", 
     opacity : 0.9
-  }
+  },
 });
