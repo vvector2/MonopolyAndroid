@@ -17,7 +17,6 @@ export class Player {
     }
     moveNext(renderer,n, endCallack) {
         if(n==0) {
-            console.log("it is time for callback");
             endCallack({name:"endMove", data:{}});
             return;
         }
@@ -30,7 +29,6 @@ export class Player {
         this.pawn.x = parseInt(cord.x - (this.pawn.w /2) + addToX);
         this.pawn.y = parseInt(cord.y - (this.pawn.h /2) + addToY);
 
-        //console.log("render x y:" + String(this.pawn.x)+ String(this.pawn.y))
         renderer.render()
         setTimeout(() => this.moveNext(renderer, n-1 ,endCallack), 500)
     }
@@ -45,7 +43,6 @@ export class Player {
     }
 
     async buyHouse(field, renderer){
-        console.log("buying a house");
         field.punishment += field.costLand;
         this.gold-= 200;
 

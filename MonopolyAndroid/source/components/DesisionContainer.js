@@ -11,7 +11,8 @@ export class DecisionContainer extends Component {
             roll : true ,
             number : 1,
             imgSource: lands[0].src,
-            name: lands[0].name};
+            name: lands[0].name,
+            showActions: true};
 
         this.buyEvent = this.buyEvent.bind(this);
         this.upgradeEvent = this.upgradeEvent.bind(this);
@@ -41,8 +42,8 @@ export class DecisionContainer extends Component {
     rollEvent(){
         this.props.parentCallback({name:"roll", data:{}});
     }
-    getActionContaner() { 
-        if(this.state.showActions === false) return false;
+    getActionContaner() {         
+        if(!this.state.showActions) return false;
         if (this.state.roll){
             return (
             <View style={gameStyles.gameActionContainer}>

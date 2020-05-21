@@ -23,123 +23,123 @@ export const dices = {
 }
 export const lands  = [
   {
-    name: "??1",  src : require('./land0.jpg')
+    name: "city1",  src : require('./land0.jpg')
   },
   {
-    name: "??2",  src : require('./land0.jpg')
+    name: "city2",  src : require('./land0.jpg')
   },
   {
-    name: "??3",  src : require('./land0.jpg')
+    name: "city3",  src : require('./land0.jpg')
   },
   {
-    name: "?4",  src : require('./land0.jpg')
+    name: "city4",  src : require('./land0.jpg')
   },
   {
-    name: "?5?",  src : require('./land0.jpg')
+    name: "city5",  src : require('./land0.jpg')
   },
   {
-    name: "??6",  src : require('./land0.jpg')
+    name: "city6",  src : require('./land0.jpg')
   },
   {
-    name: "??7",  src : require('./land0.jpg')
+    name: "city7",  src : require('./land0.jpg')
   },
   {
-    name: "?8?",  src : require('./land0.jpg')
+    name: "city8",  src : require('./land0.jpg')
   },
   {
-    name: "??9",  src : require('./land0.jpg')
+    name: "city9",  src : require('./land0.jpg')
   },
   {
-    name: "??10",  src : require('./land0.jpg')
+    name: "city10",  src : require('./land0.jpg')
   },
   {
-    name: "??11",  src : require('./land0.jpg')
+    name: "city11",  src : require('./land0.jpg')
   },
   {
-    name: "??12",  src : require('./land0.jpg')
+    name: "city12",  src : require('./land0.jpg')
   },
   {
-    name: "??13",  src : require('./land0.jpg')
+    name: "city13",  src : require('./land0.jpg')
   },
   {
-    name: "??14",  src : require('./land0.jpg')
+    name: "city14",  src : require('./land0.jpg')
   },
   {
-    name: "?15?",  src : require('./land0.jpg')
+    name: "city15",  src : require('./land0.jpg')
   },
   {
-    name: "?16?",  src : require('./land0.jpg')
+    name: "city16",  src : require('./land0.jpg')
   },
   {
-    name: "?17?",  src : require('./land0.jpg')
+    name: "city17",  src : require('./land0.jpg')
   },
   {
-    name: "??18",  src : require('./land0.jpg')
+    name: "city18",  src : require('./land0.jpg')
   },
   {
-    name: "??19",  src : require('./land0.jpg')
+    name: "city19",  src : require('./land0.jpg')
   },
   {
-    name: "??20",  src : require('./land0.jpg')
+    name: "city20",  src : require('./land0.jpg')
   },
   {
-    name: "??21",  src : require('./land0.jpg')
+    name: "city21",  src : require('./land0.jpg')
   },
   {
-    name: "??22",  src : require('./land0.jpg')
+    name: "city22",  src : require('./land0.jpg')
   },
   {
-    name: "??23",  src : require('./land0.jpg')
+    name: "city23",  src : require('./land0.jpg')
   },
   {
-    name: "??24",  src : require('./land0.jpg')
+    name: "city24",  src : require('./land0.jpg')
   },
   {
-    name: "??25",  src : require('./land0.jpg')
+    name: "city25",  src : require('./land0.jpg')
   },
   {
-    name: "??26",  src : require('./land0.jpg')
+    name: "city26",  src : require('./land0.jpg')
   },
   {
-    name: "??27",  src : require('./land0.jpg')
+    name: "city27",  src : require('./land0.jpg')
   },
   {
-    name: "??28",  src : require('./land0.jpg')
+    name: "city28",  src : require('./land0.jpg')
   },
   {
-    name: "??29",  src : require('./land0.jpg')
+    name: "city29",  src : require('./land0.jpg')
   },
   {
-    name: "??30",  src : require('./land0.jpg')
+    name: "city30",  src : require('./land0.jpg')
   },
   {
-    name: "??31",  src : require('./land0.jpg')
+    name: "city31",  src : require('./land0.jpg')
   },
   {
-    name: "??32",  src : require('./land0.jpg')
+    name: "city32",  src : require('./land0.jpg')
   },
   {
-    name: "??33",  src : require('./land0.jpg')
+    name: "city33",  src : require('./land0.jpg')
   },
   {
-    name: "??34",  src : require('./land0.jpg')
+    name: "city34",  src : require('./land0.jpg')
   },
   {
-    name: "??35",  src : require('./land0.jpg')
+    name: "city35",  src : require('./land0.jpg')
   },
   {
-    name: "??36",  src : require('./land0.jpg')
+    name: "city36",  src : require('./land0.jpg')
   },
   {
-    name: "??37",  src : require('./land0.jpg')
+    name: "city37",  src : require('./land0.jpg')
   },
   {
-    name: "??38",  src : require('./land0.jpg')
+    name: "city38",  src : require('./land0.jpg')
   },
   {
-    name: "??39",  src : require('./land0.jpg')
+    name: "city39",  src : require('./land0.jpg')
   },
   {
-    name: "??40",  src : require('./land0.jpg')
+    name: "city40",  src : require('./land0.jpg')
   },
 ]
