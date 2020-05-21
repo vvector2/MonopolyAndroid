@@ -51,8 +51,8 @@ export class PlayersPanel extends Component {
           <Text style={{ color: "red", position: "absolute", top: 15, left: 60, zIndex: 10, }}>
             {this.state.changes[idx]}</Text>}
         {this.state.changes[idx] > 0 &&
-          <Text style={{ color: "green", position: "absolute", top: -15, left: 40, zIndex: 10, }}>
-            {this.state.changes[idx]}</Text>}
+          <Text style={{ color: "green", position: "absolute", top: -5, left: 40, zIndex: 10, }}>
+            {"+" + this.state.changes[idx]}</Text>}
       </View>
     </View>)
   }

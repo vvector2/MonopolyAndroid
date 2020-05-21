@@ -76,7 +76,7 @@ export const gameStyles = StyleSheet.create({
   },
   cityImage : {
     width : windowWidth /4,
-    height : "60%"
+    height : windowHeight / 2,
   },
   buttonStyle : {
     height : 20, 
