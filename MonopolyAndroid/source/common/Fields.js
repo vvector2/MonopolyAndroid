@@ -9,7 +9,7 @@ export class Field extends Element {
         this.name =land.name;
         this.src = land.src
         this.punishment = 0;
-        this.isBuyable = false;
+        this.buyable = false;
     }
 }
 export class FieldLand extends Field {
@@ -18,7 +18,7 @@ export class FieldLand extends Field {
         this.punishment = 0;
         this.costLand = parseInt(100 + Math.random() * 20 * (Math.random() > 0.5 ? -1 : 1) );
         this.own = null;
-        this.isBuyable = true;
+        this.buyable = true;
     }
 }
 

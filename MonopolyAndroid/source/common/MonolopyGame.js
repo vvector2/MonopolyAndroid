@@ -92,7 +92,7 @@ export class MonopolyGame {
     }
     _canPlayerUpgradeField(field) {
         // return true;
-        if (this.currentPlayer.gold < 200 || !field.isBuyable) {
+        if (this.currentPlayer.gold < 200 || !field.buyable) {
             return false;
         }
         //If player have 3 fields in row then can upgrade
@@ -107,7 +107,7 @@ export class MonopolyGame {
     }
 
     _canPlayerBuyField(field) {
-        return field.own == null && field.costLand <= this.currentPlayer.gold && field.isBuyable;
+        return field.own == null && field.costLand <= this.currentPlayer.gold && field.buyable;
     }
 
 
@@ -118,7 +118,7 @@ export class MonopolyGame {
         this._handlingPunishForPlayer(field);
         this._handlingGameOver(this.currentPlayer);
         this.gameState.showBuyButton = field.costLand <= this.currentPlayer.gold &&
-            field.isBuyable &&
+            field.buyable &&
             !this.playerList.filter(x => x.listOfLand.filter(x => x.id === currentFieldId).length > 0).length > 0;
         this.gameState.showUpgradeButton = this._canPlayerUpgradeField(field)
         this.gameState.field = field; 
